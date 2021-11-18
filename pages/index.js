@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
 import Banner from "../components/Banner";
-import Card from "../components/Card";
 import Navbar from "../components/Navbar";
+import SectionCards from "../components/SectionCards";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -21,9 +21,16 @@ export default function Home() {
           subTitle="This is lovable movie"
           imgUrl="/assets/banner.jpg"
         />
-        <Card title="Movie Card" imgUrl="/assets/card1.jpg" size="large" />
-        <Card title="Movie Card" size="medium" />
-        <Card title="Movie Card" imgUrl="/assets/card3.jpg" size="small" />
+
+        <div className={styles.sectionWrapper}>
+          <SectionCards title="Movie Card" />
+        </div>
+        <div className={styles.sectionWrapper}>
+          <SectionCards title="Desney" />
+        </div>
+        <div className={styles.sectionWrapper}>
+          <SectionCards title="Watch Again" />
+        </div>
       </main>
 
       <footer className={styles.footer}>
