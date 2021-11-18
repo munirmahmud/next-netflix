@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Banner from "../components/Banner";
+import Navbar from "../components/Navbar";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -13,8 +14,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1>Netflix</h1>
-
+        <Navbar username="Munir Mahmud" />
         <Banner
           title="Don't Lookup"
           subTitle="This is lovable movie"
