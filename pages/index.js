@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Banner from "../components/Banner";
+import Card from "../components/Card";
 import Navbar from "../components/Navbar";
 import styles from "../styles/Home.module.css";
 
@@ -20,7 +21,9 @@ export default function Home() {
           subTitle="This is lovable movie"
           imgUrl="/assets/banner.jpg"
         />
-        {/* <Card /> */}
+        <Card title="Movie Card" imgUrl="/assets/card1.jpg" size="large" />
+        <Card title="Movie Card" size="medium" />
+        <Card title="Movie Card" imgUrl="/assets/card3.jpg" size="small" />
       </main>
 
       <footer className={styles.footer}>
