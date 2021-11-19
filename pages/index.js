@@ -3,12 +3,13 @@ import Image from "next/image";
 import Banner from "../components/Banner";
 import Navbar from "../components/Navbar";
 import SectionCards from "../components/SectionCards";
-import { getVideos } from "../lib/videos";
+import { getPopularVideos, getVideos } from "../lib/videos";
 import styles from "../styles/Home.module.css";
 
 export default function Home(props) {
-  const { disneyVideos, productivityVideos, travelVideos } = props;
-
+  const { disneyVideos, productivityVideos, travelVideos, popularVideos } =
+    props;
+  console.log(disneyVideos);
   return (
     <div className={styles.container}>
       <Head>
@@ -27,11 +28,16 @@ export default function Home(props) {
 
         <div className={styles.sectionWrapper}>
           <SectionCards title="Disney" videos={disneyVideos} size="large" />
-          <SectionCards title="Travel" videos={travelVideos} size="small" />
+          <SectionCards
+            title="Popular Videos"
+            videos={popularVideos}
+            size="small"
+          />
+          <SectionCards title="Travel" videos={travelVideos} size="medium" />
           <SectionCards
             title="Productivity"
             videos={productivityVideos}
-            size="medium"
+            size="small"
           />
         </div>
       </main>
@@ -56,8 +62,9 @@ export async function getServerSideProps() {
   const disneyVideos = await getVideos("disney trailer");
   const productivityVideos = await getVideos("Productivity");
   const travelVideos = await getVideos("Travel");
+  const popularVideos = await getPopularVideos();
 
   return {
-    props: { disneyVideos, productivityVideos, travelVideos },
+    props: { disneyVideos, productivityVideos, travelVideos, popularVideos },
   };
 }
