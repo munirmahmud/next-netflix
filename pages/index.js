@@ -3,9 +3,12 @@ import Image from "next/image";
 import Banner from "../components/Banner";
 import Navbar from "../components/Navbar";
 import SectionCards from "../components/SectionCards";
+import { getVideos } from "../lib/videos";
 import styles from "../styles/Home.module.css";
 
-export default function Home() {
+export default function Home(props) {
+  const { disneyVideos, productivityVideos, travelVideos } = props;
+
   return (
     <div className={styles.container}>
       <Head>
@@ -23,13 +26,13 @@ export default function Home() {
         />
 
         <div className={styles.sectionWrapper}>
-          <SectionCards title="Movie Card" />
-        </div>
-        <div className={styles.sectionWrapper}>
-          <SectionCards title="Desney" />
-        </div>
-        <div className={styles.sectionWrapper}>
-          <SectionCards title="Watch Again" />
+          <SectionCards title="Disney" videos={disneyVideos} size="large" />
+          <SectionCards title="Travel" videos={travelVideos} size="small" />
+          <SectionCards
+            title="Productivity"
+            videos={productivityVideos}
+            size="medium"
+          />
         </div>
       </main>
 
@@ -47,4 +50,14 @@ export default function Home() {
       </footer>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  const disneyVideos = await getVideos("disney trailer");
+  const productivityVideos = await getVideos("Productivity");
+  const travelVideos = await getVideos("Travel");
+
+  return {
+    props: { disneyVideos, productivityVideos, travelVideos },
+  };
 }

@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import styles from "./card.module.css";
 
 const Card = (props) => {
-  const { title, imgUrl = "/assets/card3s.jpg", size = "medium" } = props;
+  const { title, imgUrl = "/assets/card3.jpg", size = "medium" } = props;
   const [imgSrc, setImgSrc] = useState(imgUrl);
 
   const classMap = {
